@@ -1,0 +1,71 @@
+<div id="login-form-wrap">
+    <h1>SIGN UP</h1>
+    <form id="login-form" (ngSubmit)="signup()" [formGroup]="signupForm" novalidate>
+        <div class="form-group">
+            <input class="form-control" formControlName="firstname" type="text" name="firstname"
+                placeholder="First Name">
+        </div>
+        <div class="alert alert-danger"
+            *ngIf="signupForm.controls['firstname'].invalid && (signupForm.controls['firstname'].dirty || signupForm.controls['firstname'].touched)">
+            <div *ngIf="signupForm.controls['firstname'].errors!['required']">
+                First Name is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" formControlName="lastname" type="text" name="lastname" placeholder="Last Name">
+        </div>
+        <div class="alert alert-danger"
+            *ngIf="signupForm.controls['lastname'].invalid && (signupForm.controls['lastname'].dirty || signupForm.controls['lastname'].touched)">
+            <div *ngIf="signupForm.controls['lastname'].errors!['required']">
+                Last Name is Mandatory
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" formControlName="phone" type="text" name="phone" placeholder="Phone Number">
+        </div>
+        <div class="alert alert-danger"
+            *ngIf="signupForm.controls['phone'].invalid && (signupForm.controls['phone'].dirty || signupForm.controls['phone'].touched)">
+            <!-- <div *ngIf="signupForm.controls['lastname'].errors!['pattern'] || signupForm.controls['lastname'].errors!['minLength'] || signupForm.controls['lastname'].errors!['maxLength'] ">
+                Enter Valid Phone Number
+            </div> -->
+            <div *ngIf="signupForm.controls['phone'].errors!['required']">
+                Phone Number is Mandatory
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" formControlName="email" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="alert alert-danger"
+            *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+            <div *ngIf="signupForm.controls['email'].errors!['required']">
+                Email Address is Manadatory
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" formControlName="password" type="password" name="password"
+                placeholder="Password">
+        </div>
+        <div class="alert alert-danger"
+            *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+            <div *ngIf="signupForm.controls['password'].errors!['required']">
+                Password is Manadatory.
+            </div>
+        </div>
+
+
+        <button type="submit" [disabled]="signupForm.pristine || signupForm.invalid" class="btn btn-block">
+            Sign Up
+        </button>
+
+        <div id="create-account-wrap">
+            <span>New User? </span>
+            <a routerLink="/login">
+                Login
+            </a>
+        </div>
+    </form>
+</div>
