@@ -1,1 +1,48 @@
-<p>home works!</p>
+<div class="card-container" class="mx-auto" style="width: 800px;">
+    <div class="card center-card">
+        <div class="card-body form" [formGroup]="TaskInputForm">
+            <input class="form-control mr-2" formControlName="taskname" name="taskname" type="text"
+                placeholder="Enter TODO here..." />
+            <button class="btn btn-success btn-block mt-2 mb-2" (click)="addUserTAsk()">Add</button>
+            <div class="row ">
+                <div class="card ml-2 mr-2" style="width: 24rem;">
+                    <div class="card-header">
+                        Pending Task
+                    </div>
+                    <ul class="list-group list-container ">
+                        <li class="list-group-item d-flex" *ngFor="let todo of todoList">
+                            <span class="flex-grow-1 ">{{ todo.taskname }}</span>
+                            <button class="btn btn-action btn-success badge" (click)="updateTask(todo._id)">
+                                <span class="fa fa-check"></span>
+                            </button>
+
+                            <button class="btn btn-action btn-danger badge ml-1" (click)="deleteTask(todo._id)">
+                                <span class="fa fa-trash"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card" style="width: 24rem;">
+                    <div class="card-header">
+                        Completed Task
+                    </div>
+                    <ul class="list-group list-container m-0 p-0">
+                        <li class="list-group-item d-flex" *ngFor="let todo of completedList">
+                            <span class="flex-grow-1 ml-1">{{ todo.taskname }}</span>
+
+                            <button class="btn btn-action btn-success badge" (click)="updateTask(todo._id)">
+                                <span class="fa fa-check"></span>
+                            </button>
+
+                            <button class="btn btn-action btn-danger badge ml-1" (click)="deleteTask(todo._id)">
+                                <span class="fa fa-trash"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
